@@ -150,16 +150,49 @@
     var imageBounds = [[85.035942, -180], [-85.051129, 179.912109]];
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
+    // Définition des icones caravanes
+    var caravanesIcon = L.icon({
+    iconUrl: 'map/icons/marker-icon-red.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+    shadowAnchor: [12, 41]
+    });
+
     // Créer des groupes de marqueurs pour les villes et les caravanes
     var villesGroup = L.layerGroup().addTo(map);
     var caravanesGroup = L.layerGroup().addTo(map);
 
-    // Marqueurs importants
-    var nouvelle_baristeni = L.marker([-5.090944, 113.291016]).bindPopup('<b>Nouvelle-Baristeni</b>').addTo(villesGroup);
+    // Récupération de la case à cocher
+    var caravanesCheckbox = document.getElementById('caravanesCheckbox');
+
+    // Récupération du groupe de marqueurs caravanesGroup
+    var caravanesGroup = L.layerGroup([/* Vos marqueurs de caravanes ici */]);
+
+    // Fonction pour masquer les marqueurs de caravanesGroup
+    function masquerMarqueursCaravanes() {
+        map.removeLayer(caravanesGroup);
+    }
+
+    // Vérification de l'état initial de la case à cocher
+    window.onload = function() {
+        // Si la case à cocher n'est pas cochée, masquer les marqueurs de caravanesGroup
+        if (!caravanesCheckbox.checked) {
+            masquerMarqueursCaravanes();
+        }
+    };
+
+    // Marqueurs villes
+    var nouvelle_baristeni = L.marker([-5.090944, 113.291016]).bindPopup('<a href="http://wiki.kazar-rp.fr/fr/territoires/nouvelle-baristeni" target="_blank"><b>Nouvelle-Baristeni</b></a>').addTo(villesGroup);
     var kemesut = L.marker([-49.496675, -137.900391]).bindPopup('<b>Kemesut</b>').addTo(villesGroup);
     var vargstad = L.marker([2.547988, -62.929688]).bindPopup('<b>Vargstad</b>').addTo(villesGroup);
     var stalheim = L.marker([27.683528, -129.462891]).bindPopup('<b>Stalheim</b>').addTo(villesGroup);
     var valbois = L.marker([44.902578, 119.882813]).bindPopup('<b>Valbois</b>').addTo(villesGroup);
+
+    // Marqueurs caravanes
+    var nb_caravane = L.marker([-11.436955, 113.115234], {icon: caravanesIcon}).bindPopup('<b>Nouvelle-Baristeni</b>').addTo(caravanesGroup);
+    var kemesut_caravane = L.marker([-57.04073, -136.318359], {icon: caravanesIcon}).bindPopup('<b>Kemesut</b>').addTo(caravanesGroup);
 
     // Légende - Ajouter des événements pour activer/désactiver les groupes de marqueurs
       document.getElementById('villesCheckbox').addEventListener('change', function () {

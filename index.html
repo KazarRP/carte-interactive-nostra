@@ -152,12 +152,62 @@
 
     // Définition des icones caravanes
     var caravanesIcon = L.icon({
-    iconUrl: 'map/icons/marker-icon-red.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
+    iconUrl: 'map/icons/T_Map_Caravane_Icon.png',
+    iconSize: [32, 32],
+    iconAnchor: [15, 32],
     popupAnchor: [1, -34],
-    shadowSize: [41, 41],
-    shadowAnchor: [12, 41]
+    shadowSize: [32, 32],
+    shadowAnchor: [12, 32]
+    });
+
+    // Définition de l'icone NB
+    var NBIcon = L.icon({
+    iconUrl: 'map/icons/T_Map_NB_Icon.png',
+    iconSize: [32, 32],
+    iconAnchor: [10, 20],
+    popupAnchor: [1, -34],
+    shadowSize: [32, 32],
+    shadowAnchor: [12, 32]
+    });
+
+    // Définition de l'icone Kemesut
+    var KemesutIcon = L.icon({
+    iconUrl: 'map/icons/T_Map_Kemesut_Icon.png',
+    iconSize: [32, 32],
+    iconAnchor: [10, 20],
+    popupAnchor: [1, -34],
+    shadowSize: [32, 32],
+    shadowAnchor: [12, 32]
+    });
+
+    // Définition de l'icone Vargstad
+    var VargstadIcon = L.icon({
+    iconUrl: 'map/icons/T_Map_Vargstad_Icon.png',
+    iconSize: [32, 32],
+    iconAnchor: [15, 20],
+    popupAnchor: [1, -34],
+    shadowSize: [32, 32],
+    shadowAnchor: [12, 32]
+    });
+
+    // Définition de l'icone Stalheim
+    var StalheimIcon = L.icon({
+    iconUrl: 'map/icons/T_Map_Stalheim_Icon.png',
+    iconSize: [32, 32],
+    iconAnchor: [10, 20],
+    popupAnchor: [1, -34],
+    shadowSize: [32, 32],
+    shadowAnchor: [12, 32]
+    });
+
+    // Définition de l'icone Valbois
+    var ValboisIcon = L.icon({
+    iconUrl: 'map/icons/T_Map_Icon_stamp_player_base.png',
+    iconSize: [32, 32],
+    iconAnchor: [10, 20],
+    popupAnchor: [1, -34],
+    shadowSize: [32, 32],
+    shadowAnchor: [12, 32]
     });
 
     // Créer des groupes de marqueurs pour les villes et les caravanes
@@ -184,16 +234,17 @@
     };
 
     // Marqueurs villes
-    var nouvelle_baristeni = L.marker([-5.090944, 113.291016]).bindPopup('<a href="http://wiki.kazar-rp.fr/fr/territoires/nouvelle-baristeni" target="_blank"><b>Nouvelle-Baristeni</b></a>').addTo(villesGroup);
-    var kemesut = L.marker([-49.496675, -137.900391]).bindPopup('<b>Kemesut</b>').addTo(villesGroup);
-    var vargstad = L.marker([2.547988, -62.929688]).bindPopup('<b>Vargstad</b>').addTo(villesGroup);
-    var stalheim = L.marker([27.683528, -129.462891]).bindPopup('<b>Stalheim</b>').addTo(villesGroup);
-    var valbois = L.marker([44.902578, 119.882813]).bindPopup('<b>Valbois</b>').addTo(villesGroup);
+    var nouvelle_baristeni = L.marker([-5.090944, 113.291016], {icon: NBIcon}).bindPopup('<a href="http://wiki.kazar-rp.fr/fr/territoires/nouvelle-baristeni" target="_blank"><b>Nouvelle-Baristeni</b></a>').addTo(villesGroup);
+    var kemesut = L.marker([-49.496675, -137.900391], {icon: KemesutIcon}).bindPopup('<b>Kemesut</b>').addTo(villesGroup);
+    var vargstad = L.marker([2.547988, -62.929688], {icon: VargstadIcon}).bindPopup('<b>Vargstad</b>').addTo(villesGroup);
+    var stalheim = L.marker([27.683528, -129.462891], {icon: StalheimIcon}).bindPopup('<b>Stalheim</b>').addTo(villesGroup);
+    var valbois = L.marker([44.902578, 119.882813], {icon: ValboisIcon}).bindPopup('<b>Valbois</b>').addTo(villesGroup);
 
     // Marqueurs caravanes
     var nb_caravane = L.marker([-11.436955, 113.115234], {icon: caravanesIcon}).bindPopup('<b>Nouvelle-Baristeni</b>').addTo(caravanesGroup);
     var kemesut_caravane = L.marker([-57.04073, -136.318359], {icon: caravanesIcon}).bindPopup('<b>Kemesut</b>').addTo(caravanesGroup);
     var oasismarchand_caravane = L.marker([-28.07198, -48.955078], {icon: caravanesIcon}).bindPopup('<b>Oasis marchand</b>').addTo(caravanesGroup);
+    // var valbois_caravane = L.marker([42.488302, 119.882813], {icon: caravanesIcon}).bindPopup('<b>Valbois</b>').addTo(caravanesGroup);
 
     // Légende - Ajouter des événements pour activer/désactiver les groupes de marqueurs
       document.getElementById('villesCheckbox').addEventListener('change', function () {
